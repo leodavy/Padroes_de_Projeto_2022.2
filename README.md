@@ -1,0 +1,1 @@
+# Padroes_de_Projeto_2022.2
