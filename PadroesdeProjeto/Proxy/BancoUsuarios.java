@@ -1,16 +1,13 @@
 package DesignPatterns.Proxy;
 
-public class BancoUsuarios {
-    public BancoUsuarios (){
-
-    }
-
-    public String getNumeroDeUsuarios(){
+public class BancoUsuarios implements BancoInterface {
+    @Override
+    public String getNumeroDeUsuarios() {
         return null;
     }
 
-
-    public String getUsuariosConectados(){
+    @Override
+    public String getUsuariosConectados() {
         return null;
     }
 }
