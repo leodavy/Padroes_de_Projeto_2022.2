@@ -2,39 +2,39 @@ package DesignPatterns.Proxy;
 
 
 
-public class BancoProxy extends BancoUsuarios{
-
-
+public class BancoProxy extends BancoUsuarios implements IBancoUsuarios {
     protected String usuario, senha;
-
-    public BancoProxy(String listaDeAmigos, Integer solicitacoes) {
-        super(listaDeAmigos, solicitacoes);
-    }
-
-
-    @Override
-    public String getListaDeAmigos() {
-        if (temPermissaoDeAcesso()){
-            return super.getListaDeAmigos();
-        }
-        return "Sem permissão";
+    protected BancoUsuarios auth = null;
+    public BancoProxy(String usuario, String senha) {
+        this.usuario = usuario;
+        this.senha = senha;
+        this.auth = new BancoUsuarios();
     }
 
     @Override
-    public Integer getSolicitacoes() {
-        if(temPermissaoDeAcesso()) {
-            return super.getSolicitacoes();
+    public void exibirInformacoes() {
+        if(temPermissaoDeAcesso()){
+            auth.exibirInformacoes();
         }
-        return 0;
+    }
+
+    @Override
+    public String getUsuariosConectados(){
+        if(temPermissaoDeAcesso()){
+            return auth.getUsuariosConectados();
+        }
+        return null;
+    }
+
+    @Override
+    public String getNumeroDeUsuarios(){
+        if(temPermissaoDeAcesso()){
+            return auth.getNumeroDeUsuarios();
+        }
+        return null;
     }
 
     private boolean temPermissaoDeAcesso(){
-        return usuario == "user" && senha == " 123";
-
+        return usuario.equals("admin") && senha.equals("admin");
     }
 }
-
-
-
-
-

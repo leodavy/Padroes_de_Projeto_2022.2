@@ -1,20 +1,21 @@
 package DesignPatterns.Proxy;
 
-public class BancoUsuarios {
+import java.util.Objects;
 
-    private String listaDeAmigos;
-    private Integer solicitacoes;
+public class BancoUsuarios implements IBancoUsuarios {
+    public BancoUsuarios() {}
 
-    public BancoUsuarios(String listaDeAmigos, Integer solicitacoes) {
-        this.listaDeAmigos = "Ana, Leo, Spock, e mais 50";
-        this.solicitacoes = 50;
+    @Override
+    public void exibirInformacoes() {
+        System.out.println("Bem vindo administrador\n" + getUsuariosConectados() + "\n" + getNumeroDeUsuarios());
     }
 
-    public String getListaDeAmigos() {
-        return new String("Amigos conectados: " + listaDeAmigos);
+    public String getUsuariosConectados(){
+        return "Os usuários atualmente logados são: Marcos Aurélio, Dionisio, Socrátes";
     }
-    public Integer getSolicitacoes() {
-        return  solicitacoes;
+
+    public String getNumeroDeUsuarios(){
+        return "Existem 4223 cadastrados usuários no sistema";
     }
 }
 
